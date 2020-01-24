@@ -54,6 +54,21 @@ return [
             'engine' => null,
         ],
 
+        'tdh' => [
+            'driver' => 'mysql',
+            'host' => env('TDH_HOST', '127.0.0.1'),
+            'port' => env('TDH_PORT', '3306'),
+            'database' => env('TDH_DATABASE', 'forge'),
+            'username' => env('TDH_USERNAME', 'forge'),
+            'password' => env('TDH_PASSWORD', ''),
+            'unix_socket' => env('TDH_SOCKET', ''),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'strict' => true,
+            'engine' => null,
+        ],
+
         'pgsql' => [
             'driver' => 'pgsql',
             'host' => env('DB_HOST', '127.0.0.1'),
