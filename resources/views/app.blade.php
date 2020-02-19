@@ -12,23 +12,14 @@
     <!-- Custom styles for this template -->
     <link href="{{ url('/css') }}/bootstrap.css" rel="stylesheet">
     <link href="{{ url('/css') }}/font-awesome.css" rel="stylesheet">
+    <link href="{{ url('/css') }}/loader.css" rel="stylesheet">
     @yield('css')
-    <style>
-        .loading {
-            opacity:0.4;
-            background:#ccc url('{{ url('/images/spin.gif')}}') no-repeat center;
-            position:fixed;
-            width:100%;
-            height:100%;
-            top:0px;
-            left:0px;
-            z-index:999999999;
-            display: none;
-        }
-    </style>
 </head>
 
 <body>
+<div id="loader-wrapper">
+    <div id="loader"></div>
+</div>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">Withholding<font class="text-yellow">Tax</font></a>
@@ -47,8 +38,26 @@
                 <li class="nav-item {{ ($menu=='upload') ? 'active':'' }}">
                     <a class="nav-link" href="#upload" data-toggle="modal"><i class="fa fa-cloud-upload"></i> Upload Payroll</a>
                 </li>
-                <li class="nav-item {{ ($menu=='manage') ? 'active':'' }}">
-                    <a class="nav-link" href="{{ url('/') }}"><i class="fa fa-circle-o-notch fa-spin"></i> Manage Tax</a>
+                <li class="nav-item dropdown {{ ($menu=='tax') ? 'active':'' }}">
+                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+                        <i class="fa fa-circle-o-notch fa-spin"></i> Manage Tax
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#taxEmployee" data-toggle="modal"><i class="fa fa-user"></i> Per Employee</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{{ url('/tax/overall') }}"><i class="fa fa-users"></i> All Employees</a>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown {{ ($menu=='lib') ? 'active':'' }}">
+                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+                        <i class="fa fa-book"></i> Library
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="{{ url('/library/designation') }}"><i class="fa fa-user-circle"></i> Designation</a>
+                        <a class="dropdown-item" href="{{ url('/library/sg') }}"><i class="fa fa-table"></i> Salary Grade Table</a>
+                        <a class="dropdown-item" href="{{ url('/library/hazard') }}"><i class="fa fa-minus-square"></i> Hazard Table</a>
+                    </div>
                 </li>
 
                 <li class="nav-item dropdown">
@@ -89,6 +98,7 @@
 
 @yield('modal')
 @include('modal.upload')
+@include('modal.tax')
 <!-- /.container -->
 <!-- Footer -->
 <footer class="py-md-3 bg-dark footer">
@@ -105,9 +115,14 @@
 
 <script>
     $(document).ready(function(){
+
         $(".btn-upload").click(function(){
-            $('.loading').show();
+            $("#loader-wrapper").css('visibility','visible');
             $(this).addClass('disabled');
+        });
+
+        $("a[href='#taxEmployee']").on('click',function(){
+            $(".taxContent").html('Loading...').load("{{ url('/load/employee/year') }}");
         });
     });
 </script>

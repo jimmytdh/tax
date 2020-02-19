@@ -22,3 +22,7 @@ Route::get('/employee','EmployeeCtrl@index');
 
 Route::get('/upload','ProcessCtrl@index');
 Route::post('/upload','ProcessCtrl@importCsv');
+
+Route::post('/tax/employee','TaxCtrl@taxPerEmployee');
+
+Route::get('/load/employee/year','LoadCtrl@employeeYear');

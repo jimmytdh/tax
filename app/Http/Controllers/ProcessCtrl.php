@@ -18,8 +18,8 @@ class ProcessCtrl extends Controller
     public function index()
     {
         $status = session('status');
-        return self::updateEmployee(Session::get('csv'));
-        //return self::parseCsv();
+        self::updateEmployee(Session::get('csv'));
+        return self::parseCsv();
     }
 
     public function parseCsv()
