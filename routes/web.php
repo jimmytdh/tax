@@ -26,3 +26,6 @@ Route::post('/upload','ProcessCtrl@importCsv');
 Route::post('/tax/employee','TaxCtrl@taxPerEmployee');
 
 Route::get('/load/employee/year','LoadCtrl@employeeYear');
+
+
+Route::get('/library/designation','LibraryCtrl@designation');

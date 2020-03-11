@@ -15,8 +15,8 @@ class CreateHazardTablesTable extends Migration
     {
         Schema::create('hazard_tables', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('grade');
-            $table->integer('equivalent');
+            $table->string('code');
+            $table->integer('percentage');
             $table->timestamps();
         });
     }

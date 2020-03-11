@@ -54,9 +54,9 @@
                         <i class="fa fa-book"></i> Library
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="{{ url('/library/designation') }}"><i class="fa fa-user-circle"></i> Designation</a>
-                        <a class="dropdown-item" href="{{ url('/library/sg') }}"><i class="fa fa-table"></i> Salary Grade Table</a>
-                        <a class="dropdown-item" href="{{ url('/library/hazard') }}"><i class="fa fa-minus-square"></i> Hazard Table</a>
+                        <a class="dropdown-item {{ (isset($sub) && $sub=='designation') ? 'active':'' }}" href="{{ url('/library/designation') }}"><i class="fa fa-user-circle"></i> Designation</a>
+                        <a class="dropdown-item {{ (isset($sub) && $sub=='sg') ? 'active':'' }}" href="{{ url('/library/sg') }}"><i class="fa fa-table"></i> Salary Grade Table</a>
+                        <a class="dropdown-item {{ (isset($sub) && $sub=='hazard') ? 'active':'' }}" href="{{ url('/library/hazard') }}"><i class="fa fa-minus-square"></i> Hazard Table</a>
                     </div>
                 </li>
 

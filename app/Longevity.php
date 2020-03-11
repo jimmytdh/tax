@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Logevity extends Model
+class Longevity extends Model
 {
     //
 }

@@ -15,9 +15,9 @@ class CreateSalaryGradeTablesTable extends Migration
     {
         Schema::create('salary_grade_tables', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('grade');
-            $table->integer('step');
-            $table->integer('salary');
+            $table->string('code');
+            $table->integer('year');
+            $table->double('salary');
             $table->timestamps();
         });
     }

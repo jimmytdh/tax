@@ -1,0 +1,18 @@
+LIBRARY
+- Designation
+	- CRUD
+
+- Salary Grade Table
+	- based on the Salary Grade updated tranche
+- Hazard Table
+	- see hazard table
+
+
+EMPLOYEES
+- CRUD
+- Work History
+	- every employee should have history
+	- 
+- Logevities
+	- LP1(highest SG x 5%)+LP2(highest SG x 5%)+LP3....... and so on..
+	- Every 5 years ang LP.. higest SG within the 5 years
