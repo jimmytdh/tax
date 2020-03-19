@@ -7,12 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="Jimmy Parker">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" href="{{ url('/images') }}/favicon.png" sizes="16x16" type="image/png">
     <title>Talisay District Hospital Template</title>
     <!-- Custom styles for this template -->
     <link href="{{ url('/css') }}/bootstrap.css" rel="stylesheet">
     <link href="{{ url('/css') }}/font-awesome.css" rel="stylesheet">
     <link href="{{ url('/css') }}/loader.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url('/plugins/bootstrap-editable/css/bootstrap-editable.css') }}">
     @yield('css')
 </head>
 
@@ -111,6 +113,7 @@
 <!-- Bootstrap core JavaScript -->
 <script src="{{ url('/js') }}/jquery.min.js"></script>
 <script src="{{ url('/js') }}/bootstrap.bundle.min.js"></script>
+<script src="{{ url('/plugins/bootstrap-editable/js/bootstrap-editable.min.js') }}"></script>
 @yield('js')
 
 <script>
@@ -123,6 +126,26 @@
 
         $("a[href='#taxEmployee']").on('click',function(){
             $(".taxContent").html('Loading...').load("{{ url('/load/employee/year') }}");
+        });
+    });
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $.fn.editable.defaults.mode = 'popup';
+
+    $(document).ready(function() {
+        $('#year').editable({
+            type: 'number',
+            name: 'year',
+            pk: 1,
+            url: "{{ url('/library/year') }}",
+            success: function(data,value){
+                $("#loader-wrapper").css('visibility','visible');
+                window.location.reload();
+            }
         });
     });
 </script>

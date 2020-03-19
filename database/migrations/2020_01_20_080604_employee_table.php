@@ -23,9 +23,6 @@ class EmployeeTable extends Migration
             $table->string('division')->nullable();
             $table->string('designation')->nullable();
             $table->date('hired_date')->nullable();
-            $table->string('salary_grade')->nullable();
-            $table->integer('basic_salary')->nullable();
-            $table->float('tax')->nullable();
             $table->timestamps();
         });
     }
